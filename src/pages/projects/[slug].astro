@@ -31,7 +31,7 @@ const { project } = Astro.props;
         <p class="summary">{project.summary}</p>
         <div class="hero-actions" aria-label="프로젝트 외부 링크">
           <a class="primary-action" href={project.github}>GitHub Repository</a>
-          {project.demo && <a href={project.demo.url}>Demo Video</a>}
+          {project.demo && <a href={project.demo.url}>시연 영상</a>}
           {project.docs?.[0] && <a href={project.docs[0].url}>Reference Docs</a>}
         </div>
         <div class="meta">
