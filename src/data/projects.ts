@@ -40,6 +40,7 @@ export const projects = [
       'Loki',
       'n8n',
     ],
+    featuredStack: ['RAG 추천', 'pgvector', 'Spring AI Tool Calling', '전용 Connection Pool', 'Grafana/Loki', 'n8n Slack 알림'],
     highlights: [
       'RAG 게시물 추천 요청 증가로 발생할 수 있는 connection storm을 방지하기 위해 RAG 전용 HikariDataSource를 분리했습니다.',
       'pgvector 임베딩 검색과 Spring AI Tool Calling을 연결해 자연어 의도 기반 추천 구조를 구현했습니다.',
@@ -89,6 +90,7 @@ export const projects = [
       'Git',
       'GitHub',
     ],
+    featuredStack: ['Redis 분산락', '낙관적 락', 'Kafka Pending Event', 'Cache-Aside', 'Spring Retry'],
     highlights: [
       'Redis SET NX 기반 분산락으로 동일 주문의 중복 결제와 포인트 중복 차감을 방지했습니다.',
       'UserPoint 엔티티에 낙관적 락과 최대 3회 재시도 정책을 적용해 포인트 동시 차감 충돌을 해소했습니다.',
@@ -155,6 +157,7 @@ export const projects = [
       'GitHub Actions',
       'JUnit',
     ],
+    featuredStack: ['FULLTEXT Index', 'QueryDSL', 'LIKE Fallback', 'PageableExecutionUtils', 'ALB 롤링 배포', 'AWS SSM'],
     highlights: [
       'FULLTEXT + LIKE 하이브리드 검색으로 통합 검색 응답 시간을 약 95% 개선했습니다.',
       'PortfolioQueryRepositoryImpl을 분리해 검색/페이징 쿼리를 Repository 계층으로 캡슐화했습니다.',
@@ -202,6 +205,7 @@ export const projects = [
       'PortOne',
       'Gradle',
     ],
+    featuredStack: ['PESSIMISTIC_WRITE', '다품목 주문 API', '구독 상태 머신', 'SubscriptionBilling', '주문-포인트 연동'],
     highlights: [
       'PESSIMISTIC_WRITE 기반 재고 락으로 동시 주문 상황의 재고 정합성을 확보했습니다.',
       'Subscription과 SubscriptionBilling을 분리해 구독 상태와 회차별 청구 이력을 명확히 관리했습니다.',
