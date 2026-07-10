@@ -68,7 +68,6 @@ const introduction = [
   <body>
     <main class="shell">
       <nav class="topbar" aria-label="페이지 내 이동">
-        <a class="brand" href="/">CHM</a>
         <div>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -256,20 +255,9 @@ const introduction = [
     display: flex;
     min-height: 52px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 16px;
     border-bottom: 1px solid var(--line);
-  }
-
-  .brand {
-    display: grid;
-    width: 38px;
-    height: 38px;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--ink);
-    color: #fff;
-    font-weight: 900;
   }
 
   .topbar div {
@@ -594,8 +582,7 @@ const introduction = [
     }
 
     .topbar {
-      align-items: flex-start;
-      flex-direction: column;
+      justify-content: flex-start;
       padding-bottom: 14px;
     }
 
