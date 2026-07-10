@@ -7,6 +7,10 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '백엔드, AI 설계, RAG 추천, 모니터링, n8n 알림 구축',
     github: 'https://github.com/Team3-Final-Project-SNS/Final-project',
+    demo: {
+      label: '시연 영상',
+      url: 'https://app.notion.com/p/81eea6a4f79d83dea21181738a39d457',
+    },
     docs: [
       {
         label: 'AI 문서',
@@ -72,6 +76,7 @@ export const projects = [
     team: '1인 백엔드 개발',
     role: '주문/결제, 포인트, 이벤트 재시도, 캐시 최적화',
     github: 'https://github.com/godchm/sparta-coffee',
+    demo: null,
     docs: [],
     summary:
       '복수 메뉴 주문, 포인트 충전 및 결제, 인기 검색어와 메뉴 조회 기능을 구현한 백엔드 서비스입니다. Redis 분산락과 낙관적 락으로 결제/포인트 동시성 문제를 제어하고, Kafka 이벤트 발행 실패를 Pending Event 패턴으로 분리했습니다.',
@@ -127,6 +132,10 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '리뷰/포트폴리오 도메인, 검색 최적화, 무중단 배포',
     github: 'https://github.com/Ready-s7/Readys7-project',
+    demo: {
+      label: '시연 영상',
+      url: 'https://app.notion.com/p/Ready-s7-399ea6a4f79d805b9660dd5d8af02bc0',
+    },
     docs: [
       {
         label: '인덱스/검색 최적화 문서',
@@ -189,6 +198,10 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '상품/주문 도메인, 다품목 주문 API, 정기구독 모델, 주문-포인트 연동',
     github: 'https://github.com/PX-Sparta/payment-project',
+    demo: {
+      label: '시연 영상',
+      url: 'https://app.notion.com/p/Sparta-Payment-Subscription-399ea6a4f79d80a59f70e5e8f85f6d08',
+    },
     docs: [],
     summary:
       '이커머스 결제, 정기구독, 포인트를 통합한 백엔드 시스템입니다. 상품/주문 도메인과 다품목 주문 API, 정기구독 상태/청구 모델, 주문-포인트 연동을 구현하고 비관적 락 기반 재고 동시성 제어를 적용했습니다.',
