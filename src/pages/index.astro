@@ -18,6 +18,12 @@ const highlights = [
   { label: 'Projects', value: '4 Backend Builds' },
 ];
 
+const coreStrengths = [
+  { label: 'Concurrency', value: 'Redis Lock / Optimistic Lock' },
+  { label: 'Performance', value: 'Fulltext Index / QueryDSL' },
+  { label: 'Operations', value: 'Prometheus / Grafana / Loki' },
+];
+
 const skillGroups = [
   {
     title: 'Backend',
@@ -92,7 +98,20 @@ const introduction = [
         </div>
 
         <aside class="profile-panel" aria-label="프로필 요약">
-          <div class="avatar" aria-hidden="true">BE</div>
+          <div class="panel-heading">
+            <p class="eyebrow">Backend Focus</p>
+            <h2>Core Strengths</h2>
+          </div>
+          <ul class="strength-list">
+            {
+              coreStrengths.map((item) => (
+                <li>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </li>
+              ))
+            }
+          </ul>
           <dl>
             <div>
               <dt>Location</dt>
@@ -167,7 +186,7 @@ const introduction = [
         <div class="project-grid">
           {
             projects.map((project) => (
-              <a class="project-card" href={`/projects/${project.slug}/`}>
+              <article class="project-card">
                 <div class="project-top">
                   <span>{project.period}</span>
                   <strong>{project.team}</strong>
@@ -178,8 +197,11 @@ const introduction = [
                 <ul class="tags" aria-label={`${project.title} 기술 스택`}>
                   {project.stack.slice(0, 6).map((tag) => <li>{tag}</li>)}
                 </ul>
-                <span class="read-more">상세 보기</span>
-              </a>
+                <div class="project-links">
+                  <a class="read-more" href={`/projects/${project.slug}/`}>상세 보기</a>
+                  <a href={project.github}>GitHub</a>
+                </div>
+              </article>
             ))
           }
         </div>
@@ -392,17 +414,43 @@ const introduction = [
     padding: 28px;
   }
 
-  .avatar {
+  .panel-heading {
+    margin-bottom: 22px;
+  }
+
+  .panel-heading h2 {
+    font-size: 1.45rem;
+  }
+
+  .strength-list {
     display: grid;
-    width: 86px;
-    height: 86px;
-    place-items: center;
-    margin-bottom: 28px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 900;
+    gap: 10px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .strength-list li {
+    padding: 13px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(226, 242, 238, 0.55);
+  }
+
+  .strength-list span {
+    display: block;
+    color: var(--gold);
+    font-size: 0.74rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  .strength-list strong {
+    display: block;
+    margin-top: 6px;
+    color: var(--ink);
+    font-size: 0.95rem;
+    line-height: 1.35;
   }
 
   dl {
@@ -546,11 +594,30 @@ const introduction = [
     font-weight: 800;
   }
 
-  .read-more {
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: auto;
     padding-top: 24px;
-    color: var(--accent);
+  }
+
+  .project-links a {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 13px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
     font-weight: 900;
+  }
+
+  .project-links .read-more {
+    border-color: rgba(15, 118, 110, 0.28);
+    background: var(--accent-soft);
+    color: var(--accent);
   }
 
   .education-card h3 {

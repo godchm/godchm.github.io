@@ -33,6 +33,10 @@ const { project } = Astro.props;
         <h1>{project.title}</h1>
         <p class="subtitle">{project.subtitle}</p>
         <p class="summary">{project.summary}</p>
+        <div class="hero-actions" aria-label="프로젝트 외부 링크">
+          <a class="primary-action" href={project.github}>GitHub Repository</a>
+          {project.docs?.[0] && <a href={project.docs[0].url}>Reference Docs</a>}
+        </div>
         <div class="meta">
           <div>
             <span>Period</span>
@@ -231,6 +235,30 @@ const { project } = Astro.props;
     color: var(--muted);
     font-size: 1.08rem;
     line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .hero-actions a {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  .hero-actions .primary-action {
+    background: var(--ink);
+    color: #ffffff;
   }
 
   .meta {
