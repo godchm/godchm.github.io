@@ -1,81 +1,80 @@
 ---
+import { projects } from '../data/projects';
+
 const profile = {
   name: '최형민',
-  role: 'Frontend / Web Developer',
+  role: '서버/백엔드 개발자',
   location: 'Seoul, Korea',
-  email: 'your-email@example.com',
-  github: 'https://github.com/your-github-id',
+  email: 'stc05051@naver.com',
+  github: 'https://github.com/godchm',
+  headline: '문제를 구조로 해결하고, 운영까지 책임지는 백엔드 개발자',
   summary:
-    '사용자가 빠르게 이해하고 편하게 사용할 수 있는 웹 경험을 만드는 개발자입니다. Astro 기반 정적 사이트, 반응형 UI, 접근성, 성능을 중요하게 생각합니다.',
+    'KDT 실시간 커머스 플랫폼 개발자 양성과정을 수료했습니다. Java/Spring 기반 백엔드 프로젝트에서 동시성 제어, 검색 최적화, RAG 추천, 모니터링, 무중단 배포를 경험했습니다.',
 };
 
-const skills = [
-  'Astro',
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'GitHub Pages',
-  'Responsive UI',
+const highlights = [
+  { label: 'Track', value: 'Backend Bootcamp' },
+  { label: 'Core', value: 'Java / Spring' },
+  { label: 'Projects', value: '4 Backend Builds' },
 ];
 
-const projects = [
+const skillGroups = [
   {
-    title: 'Personal Resume Site',
-    period: '2026',
-    description:
-      'Astro와 GitHub Pages를 사용해 빠르고 관리하기 쉬운 개인 이력서 사이트를 구축했습니다.',
-    points: ['정적 빌드 기반 배포 자동화', '모바일/데스크톱 반응형 레이아웃', '명확한 섹션 구조와 읽기 쉬운 타이포그래피'],
+    title: 'Backend',
+    items: ['Java', 'Spring Boot', 'Spring Security', 'Spring Data JPA', 'QueryDSL', 'JWT'],
   },
   {
-    title: 'Portfolio Project',
-    period: '2025',
-    description:
-      '프로젝트 소개, 기술 스택, 문제 해결 과정을 한눈에 볼 수 있도록 정리한 포트폴리오 페이지입니다.',
-    points: ['프로젝트별 성과 중심 구성', '재사용 가능한 스타일 시스템', 'SEO 기본 메타 정보 구성'],
+    title: 'Data / Infra',
+    items: ['MySQL', 'PostgreSQL', 'Redis', 'Kafka', 'Docker', 'AWS', 'GitHub Actions'],
+  },
+  {
+    title: 'Ops / AI',
+    items: ['Prometheus', 'Grafana', 'Loki', 'n8n', 'Spring AI', 'OpenAI API', 'RAG'],
   },
 ];
 
-const experiences = [
-  {
-    company: 'Your Company',
-    role: 'Web Developer',
-    period: '2024 - Present',
-    description:
-      '웹 서비스의 UI 구현, 성능 개선, 배포 자동화 작업을 담당했습니다. 실제 내용으로 바꿔 넣으면 이력서 완성도가 확 올라갑니다.',
-  },
-  {
-    company: 'Previous Team',
-    role: 'Frontend Intern',
-    period: '2023 - 2024',
-    description:
-      '디자인 시안을 바탕으로 반응형 페이지를 구현하고, 컴포넌트 단위의 유지보수성을 개선했습니다.',
-  },
-];
+const education = {
+  school: '팀 스파르타',
+  course: 'KDT 실시간 커머스 플랫폼 개발자 양성과정 수료',
+  period: '2025.12 - 2026.06',
+};
 ---
 
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={`${profile.name} 이력서 사이트`} />
-    <title>{profile.name} | Resume</title>
+    <meta name="description" content={`${profile.name} 백엔드 개발자 이력서`} />
+    <title>{profile.name} | Backend Resume</title>
   </head>
   <body>
-    <main class="page-shell">
-      <section class="hero" aria-labelledby="intro-title">
+    <main class="shell">
+      <nav class="topbar" aria-label="페이지 내 이동">
+        <a class="brand" href="/">CHM</a>
+        <div>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+        </div>
+      </nav>
+
+      <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Resume</p>
-          <h1 id="intro-title">{profile.name}</h1>
+          <p class="eyebrow">Backend Developer Resume</p>
+          <h1 id="hero-title">{profile.name}</h1>
           <p class="role">{profile.role}</p>
+          <p class="headline">{profile.headline}</p>
           <p class="summary">{profile.summary}</p>
-          <div class="actions" aria-label="연락처">
+
+          <div class="actions" aria-label="연락 링크">
+            <a class="primary" href="#projects">프로젝트 보기</a>
             <a href={`mailto:${profile.email}`}>Email</a>
             <a href={profile.github}>GitHub</a>
           </div>
         </div>
-        <aside class="quick-info" aria-label="기본 정보">
+
+        <aside class="profile-panel" aria-label="프로필 요약">
+          <div class="avatar" aria-hidden="true">BE</div>
           <dl>
             <div>
               <dt>Location</dt>
@@ -93,56 +92,77 @@ const experiences = [
         </aside>
       </section>
 
-      <section class="section" aria-labelledby="skills-title">
-        <div class="section-heading">
+      <section class="metrics" aria-label="핵심 정보">
+        {
+          highlights.map((item) => (
+            <div class="metric">
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+            </div>
+          ))
+        }
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="section-title">
           <p class="eyebrow">Capabilities</p>
           <h2 id="skills-title">Skills</h2>
         </div>
-        <ul class="skill-list">
-          {skills.map((skill) => <li>{skill}</li>)}
-        </ul>
-      </section>
-
-      <section class="section" aria-labelledby="experience-title">
-        <div class="section-heading">
-          <p class="eyebrow">Work</p>
-          <h2 id="experience-title">Experience</h2>
-        </div>
-        <div class="timeline">
+        <div class="skill-grid">
           {
-            experiences.map((item) => (
-              <article class="timeline-item">
-                <p class="period">{item.period}</p>
-                <h3>{item.role}</h3>
-                <p class="company">{item.company}</p>
-                <p>{item.description}</p>
-              </article>
-            ))
-          }
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="eyebrow">Selected</p>
-          <h2 id="projects-title">Projects</h2>
-        </div>
-        <div class="project-grid">
-          {
-            projects.map((project) => (
-              <article class="project-card">
-                <div class="project-topline">
-                  <h3>{project.title}</h3>
-                  <span>{project.period}</span>
-                </div>
-                <p>{project.description}</p>
+            skillGroups.map((group) => (
+              <article class="skill-card">
+                <h3>{group.title}</h3>
                 <ul>
-                  {project.points.map((point) => <li>{point}</li>)}
+                  {group.items.map((skill) => <li>{skill}</li>)}
                 </ul>
               </article>
             ))
           }
         </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-title">
+          <p class="eyebrow">Selected Work</p>
+          <h2 id="projects-title">Projects</h2>
+          <p>카드를 누르면 프로젝트별 구현 내용과 기술적 의사결정을 자세히 볼 수 있습니다.</p>
+        </div>
+        <div class="project-grid">
+          {
+            projects.map((project) => (
+              <a class="project-card" href={`/projects/${project.slug}/`}>
+                <div class="project-top">
+                  <span>{project.period}</span>
+                  <strong>{project.team}</strong>
+                </div>
+                <h3>{project.title}</h3>
+                <p class="subtitle">{project.subtitle}</p>
+                <p>{project.summary}</p>
+                <ul class="tags" aria-label={`${project.title} 기술 스택`}>
+                  {project.stack.slice(0, 6).map((tag) => <li>{tag}</li>)}
+                </ul>
+                <span class="read-more">상세 보기</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="education-title">
+        <div class="section-title">
+          <p class="eyebrow">Education</p>
+          <h2 id="education-title">Education</h2>
+        </div>
+        <article class="education-card">
+          <span>{education.period}</span>
+          <h3>{education.school}</h3>
+          <p>{education.course}</p>
+          <p>
+            백엔드 개발 과정을 통해 Java/Spring 기반 서비스 개발, 팀 프로젝트 협업, 배포 자동화,
+            모니터링, 동시성 제어와 같은 실무형 주제를 프로젝트로 학습했습니다.
+          </p>
+        </article>
       </section>
     </main>
   </body>
@@ -151,14 +171,16 @@ const experiences = [
 <style>
   :root {
     color-scheme: light;
-    --ink: #1f2933;
-    --muted: #65717f;
-    --line: #dce3ea;
-    --paper: #fbfaf7;
-    --panel: #ffffff;
+    --ink: #17212b;
+    --muted: #5f6f7c;
+    --paper: #f5f7f4;
+    --surface: #fffdfa;
+    --line: #d8dfd9;
     --accent: #0f766e;
-    --accent-strong: #164e63;
-    --soft: #edf7f5;
+    --accent-dark: #155263;
+    --accent-soft: #e2f2ee;
+    --gold: #a16207;
+    --shadow: 0 18px 44px rgba(23, 33, 43, 0.1);
     font-family:
       Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       sans-serif;
@@ -168,11 +190,16 @@ const experiences = [
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     min-width: 320px;
     background:
-      linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 32rem),
+      linear-gradient(120deg, rgba(15, 118, 110, 0.14), transparent 34rem),
+      linear-gradient(230deg, rgba(161, 98, 7, 0.12), transparent 28rem),
       var(--paper);
     color: var(--ink);
   }
@@ -182,10 +209,39 @@ const experiences = [
     text-decoration: none;
   }
 
-  .page-shell {
+  .shell {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
-    padding: 56px 0;
+    padding: 26px 0 72px;
+  }
+
+  .topbar {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .topbar div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 0.94rem;
+    font-weight: 800;
   }
 
   .hero {
@@ -193,8 +249,8 @@ const experiences = [
     grid-template-columns: minmax(0, 1fr) 340px;
     gap: 32px;
     align-items: stretch;
-    min-height: 62vh;
-    padding: 48px 0 40px;
+    min-height: 66vh;
+    padding: 50px 0 30px;
   }
 
   .hero-copy {
@@ -204,10 +260,10 @@ const experiences = [
   }
 
   .eyebrow {
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 800;
+    font-size: 0.76rem;
+    font-weight: 850;
     letter-spacing: 0;
     text-transform: uppercase;
   }
@@ -215,20 +271,23 @@ const experiences = [
   h1,
   h2,
   h3,
-  p {
+  p,
+  dd {
     overflow-wrap: anywhere;
   }
 
   h1 {
+    max-width: 760px;
     margin: 0;
-    font-size: clamp(3rem, 12vw, 7.4rem);
-    line-height: 0.92;
+    font-size: clamp(4rem, 13vw, 8.2rem);
+    line-height: 0.9;
     letter-spacing: 0;
   }
 
   h2 {
     margin: 0;
     font-size: 2rem;
+    line-height: 1.08;
     letter-spacing: 0;
   }
 
@@ -239,18 +298,32 @@ const experiences = [
   }
 
   .role {
-    margin: 20px 0 0;
-    color: var(--accent-strong);
+    margin: 24px 0 0;
+    color: var(--accent-dark);
     font-size: 1.35rem;
-    font-weight: 700;
+    font-weight: 800;
+  }
+
+  .headline {
+    max-width: 720px;
+    margin: 18px 0 0;
+    font-size: clamp(1.45rem, 3vw, 2.35rem);
+    line-height: 1.22;
+    font-weight: 850;
+  }
+
+  .summary,
+  .section-title p,
+  .project-card p,
+  .education-card p {
+    color: var(--muted);
+    line-height: 1.72;
   }
 
   .summary {
-    max-width: 680px;
-    margin: 24px 0 0;
-    color: var(--muted);
-    font-size: 1.08rem;
-    line-height: 1.75;
+    max-width: 700px;
+    margin: 22px 0 0;
+    font-size: 1.06rem;
   }
 
   .actions {
@@ -261,32 +334,49 @@ const experiences = [
   }
 
   .actions a {
+    display: inline-flex;
     min-height: 44px;
+    align-items: center;
+    justify-content: center;
     padding: 12px 18px;
     border: 1px solid var(--ink);
     border-radius: 8px;
-    background: var(--ink);
-    color: white;
-    font-weight: 750;
-  }
-
-  .actions a + a {
-    background: transparent;
     color: var(--ink);
+    font-weight: 800;
   }
 
-  .quick-info,
+  .actions .primary {
+    background: var(--ink);
+    color: #ffffff;
+  }
+
+  .profile-panel,
+  .metric,
+  .skill-card,
   .project-card,
-  .timeline-item {
-    border: 1px solid var(--line);
+  .education-card {
+    border: 1px solid rgba(216, 223, 217, 0.98);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.84);
-    box-shadow: 0 18px 50px rgba(31, 41, 51, 0.08);
+    background: rgba(255, 253, 250, 0.9);
+    box-shadow: var(--shadow);
   }
 
-  .quick-info {
+  .profile-panel {
     align-self: center;
-    padding: 26px;
+    padding: 28px;
+  }
+
+  .avatar {
+    display: grid;
+    width: 86px;
+    height: 86px;
+    place-items: center;
+    margin-bottom: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 900;
   }
 
   dl {
@@ -297,109 +387,184 @@ const experiences = [
 
   dt {
     color: var(--muted);
-    font-size: 0.78rem;
-    font-weight: 800;
+    font-size: 0.76rem;
+    font-weight: 850;
     text-transform: uppercase;
   }
 
   dd {
     margin: 6px 0 0;
-    font-weight: 700;
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding: 18px 0 42px;
+  }
+
+  .metric {
+    padding: 18px;
+  }
+
+  .metric span,
+  .project-top span,
+  .education-card span {
+    display: block;
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  .metric strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--accent-dark);
+    font-size: 1.15rem;
   }
 
   .section {
     display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 40px;
-    padding: 48px 0;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 38px;
+    padding: 52px 0;
     border-top: 1px solid var(--line);
   }
 
-  .skill-list {
+  .section-title {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+
+  .skill-grid,
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card,
+  .project-card,
+  .education-card {
+    padding: 22px;
+  }
+
+  .skill-card ul,
+  .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    align-content: start;
-    margin: 0;
+    gap: 8px;
+    margin: 18px 0 0;
     padding: 0;
     list-style: none;
   }
 
-  .skill-list li {
-    padding: 10px 13px;
-    border: 1px solid rgba(15, 118, 110, 0.22);
+  .skill-card li,
+  .tags li {
+    padding: 8px 10px;
     border-radius: 8px;
-    background: var(--soft);
-    color: var(--accent-strong);
-    font-weight: 750;
-  }
-
-  .timeline,
-  .project-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .timeline-item,
-  .project-card {
-    padding: 22px;
-  }
-
-  .timeline-item p,
-  .project-card p,
-  .project-card li {
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .period,
-  .company,
-  .project-topline span {
-    color: var(--accent);
-    font-size: 0.92rem;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    font-size: 0.88rem;
     font-weight: 800;
   }
 
-  .company {
-    margin: 8px 0 12px;
-  }
-
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .project-topline {
+  .project-card {
     display: flex;
-    gap: 12px;
+    min-height: 360px;
+    flex-direction: column;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .project-card:hover {
+    border-color: rgba(15, 118, 110, 0.42);
+    box-shadow: 0 24px 54px rgba(23, 33, 43, 0.14);
+    transform: translateY(-3px);
+  }
+
+  .project-top {
+    display: flex;
     align-items: start;
     justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
-  .project-card ul {
-    margin: 16px 0 0;
-    padding-left: 20px;
+  .project-top strong {
+    color: var(--muted);
+    font-size: 0.84rem;
   }
 
-  @media (max-width: 780px) {
-    .page-shell {
-      width: min(100% - 24px, 680px);
-      padding: 24px 0 40px;
-    }
+  .subtitle {
+    margin: 8px 0 0;
+    color: var(--accent-dark);
+    font-weight: 800;
+  }
 
+  .read-more {
+    margin-top: auto;
+    padding-top: 24px;
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  .education-card h3 {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 900px) {
     .hero,
     .section,
+    .skill-grid,
     .project-grid {
       grid-template-columns: 1fr;
     }
 
+    .section-title {
+      position: static;
+    }
+
+    .project-card {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .shell {
+      width: min(100% - 24px, 640px);
+      padding: 18px 0 48px;
+    }
+
+    .topbar {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-bottom: 14px;
+    }
+
     .hero {
       min-height: auto;
-      padding-top: 32px;
+      padding-top: 34px;
+    }
+
+    .metrics {
+      grid-template-columns: 1fr;
+      padding-bottom: 30px;
     }
 
     .section {
-      gap: 20px;
-      padding: 36px 0;
+      gap: 22px;
+      padding: 38px 0;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 22vw, 5.4rem);
     }
   }
 </style>
