@@ -38,6 +38,24 @@ const education = {
   course: 'KDT 실시간 커머스 플랫폼 개발자 양성과정 수료',
   period: '2025.12 - 2026.06',
 };
+
+const introduction = [
+  {
+    title: '팀이 같은 방향으로 가도록 조율하는 개발자',
+    body:
+      '백엔드 개발자를 목표로 하며 여러 팀 프로젝트에서 팀장 역할을 맡았습니다. 프로젝트 초반에는 목표와 진행 방식을 정리하고, 회의에서는 팀원들의 의견을 조율하며 각자의 역할이 서비스 방향과 맞물리도록 돕는 데 집중했습니다.',
+  },
+  {
+    title: '비전공에서 출발해 문제 해결의 기초를 다졌습니다',
+    body:
+      '행정학을 전공했지만 재학 중 C언어 과목에서 A+를 받으며 프로그래밍의 기초와 문제 해결 과정에 흥미를 느꼈습니다. 또한 AI를 활용해 졸업논문을 작성하고 프로젝트에서 AI 기능을 개발하며, 새로운 기술을 실제 문제에 적용하는 경험을 쌓았습니다.',
+  },
+  {
+    title: '운영과 사용자 흐름까지 함께 보는 백엔드 개발자',
+    body:
+      '백엔드 로직뿐 아니라 사용자가 실제로 마주하는 화면과 서비스 흐름을 이해하기 위해 프론트엔드 강의도 수강했습니다. 프로젝트에서는 모니터링 환경을 구성하고 지표를 확인하며, 장애 징후를 빠르게 파악하고 안정적인 서비스를 유지하는 중요성을 배웠습니다.',
+  },
+];
 ---
 
 <html lang="ko">
@@ -52,6 +70,7 @@ const education = {
       <nav class="topbar" aria-label="페이지 내 이동">
         <a class="brand" href="/">CHM</a>
         <div>
+          <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#education">Education</a>
@@ -99,8 +118,26 @@ const education = {
               <span>{item.label}</span>
               <strong>{item.value}</strong>
             </div>
-          ))
-        }
+        ))
+      }
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="section-title">
+          <p class="eyebrow">About Me</p>
+          <h2 id="about-title">Introduction</h2>
+          <p>비전공자로 시작했지만, 팀을 이끌고 문제를 구조화하며 백엔드 개발자로 성장해왔습니다.</p>
+        </div>
+        <div class="intro-list">
+          {
+            introduction.map((item) => (
+              <article class="intro-card">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
       </section>
 
       <section class="section" id="skills" aria-labelledby="skills-title">
@@ -352,6 +389,7 @@ const education = {
 
   .profile-panel,
   .metric,
+  .intro-card,
   .skill-card,
   .project-card,
   .education-card {
@@ -441,16 +479,28 @@ const education = {
   }
 
   .skill-grid,
+  .intro-list,
   .project-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
+  .intro-list {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-card,
   .skill-card,
   .project-card,
   .education-card {
     padding: 22px;
+  }
+
+  .intro-card p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.76;
   }
 
   .skill-card ul,
@@ -522,6 +572,7 @@ const education = {
   @media (max-width: 900px) {
     .hero,
     .section,
+    .intro-list,
     .skill-grid,
     .project-grid {
       grid-template-columns: 1fr;

@@ -22,7 +22,10 @@ const { project } = Astro.props;
     <main class="shell">
       <nav class="topbar" aria-label="프로젝트 이동">
         <a class="back" href="/">← Home</a>
-        <a href={project.github}>GitHub</a>
+        <div>
+          <a href={project.github}>GitHub</a>
+          {project.docs?.[0] && <a href={project.docs[0].url}>Docs</a>}
+        </div>
       </nav>
 
       <section class="hero">
@@ -55,6 +58,26 @@ const { project } = Astro.props;
           {project.stack.map((tag) => <li>{tag}</li>)}
         </ul>
       </section>
+
+      {
+        project.docs && (
+          <section class="section">
+            <div class="section-title">
+              <p class="eyebrow">Documents</p>
+              <h2>Reference Docs</h2>
+            </div>
+            <div class="doc-grid">
+              {project.docs.map((doc) => (
+                <a class="doc-card" href={doc.url}>
+                  <span>Notion</span>
+                  <strong>{doc.label}</strong>
+                  <p>프로젝트를 진행하며 정리한 구현/학습 문서입니다.</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )
+      }
 
       <section class="section">
         <div class="section-title">
@@ -146,6 +169,11 @@ const { project } = Astro.props;
     font-weight: 850;
   }
 
+  .topbar div {
+    display: flex;
+    gap: 16px;
+  }
+
   .back {
     color: var(--ink);
   }
@@ -214,6 +242,7 @@ const { project } = Astro.props;
 
   .meta div,
   .tags,
+  .doc-card,
   .highlight-grid article,
   .detail-list article {
     border: 1px solid rgba(216, 223, 217, 0.98);
@@ -278,6 +307,47 @@ const { project } = Astro.props;
     gap: 14px;
   }
 
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .doc-card {
+    padding: 22px;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .doc-card:hover {
+    border-color: rgba(15, 118, 110, 0.42);
+    box-shadow: 0 24px 54px rgba(23, 33, 43, 0.14);
+    transform: translateY(-3px);
+  }
+
+  .doc-card span {
+    display: block;
+    color: var(--gold);
+    font-size: 0.76rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  .doc-card strong {
+    display: block;
+    margin-top: 10px;
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+
+  .doc-card p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
   .highlight-grid article,
   .detail-list article {
     padding: 22px;
@@ -302,6 +372,7 @@ const { project } = Astro.props;
   @media (max-width: 860px) {
     .section,
     .meta,
+    .doc-grid,
     .highlight-grid {
       grid-template-columns: 1fr;
     }

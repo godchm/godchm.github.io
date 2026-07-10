@@ -7,6 +7,16 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '백엔드, AI 설계, RAG 추천, 모니터링, n8n 알림 구축',
     github: 'https://github.com/Team3-Final-Project-SNS/Final-project',
+    docs: [
+      {
+        label: 'AI 문서',
+        url: 'https://app.notion.com/p/AI-481ea6a4f79d8359be818107f37e1787',
+      },
+      {
+        label: '모니터링 문서',
+        url: 'https://app.notion.com/p/a2cea6a4f79d83c58a4181de0249cb4b',
+      },
+    ],
     summary:
       '같은 학교 안에서 식사 동행을 찾는 서비스입니다. 자연어 의도를 반영한 추천을 위해 pgvector와 Spring AI Tool Calling 기반 RAG 구조를 도입했고, 운영 관점의 로그/메트릭 모니터링과 Slack 알림 자동화를 구축했습니다.',
     stack: [
@@ -61,6 +71,7 @@ export const projects = [
     team: '1인 백엔드 개발',
     role: '주문/결제, 포인트, 이벤트 재시도, 캐시 최적화',
     github: 'https://github.com/godchm/sparta-coffee',
+    docs: [],
     summary:
       '복수 메뉴 주문, 포인트 충전 및 결제, 인기 검색어와 메뉴 조회 기능을 구현한 백엔드 서비스입니다. Redis 분산락과 낙관적 락으로 결제/포인트 동시성 문제를 제어하고, Kafka 이벤트 발행 실패를 Pending Event 패턴으로 분리했습니다.',
     stack: [
@@ -114,6 +125,12 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '리뷰/포트폴리오 도메인, 검색 최적화, 무중단 배포',
     github: 'https://github.com/Ready-s7/Readys7-project',
+    docs: [
+      {
+        label: '인덱스/검색 최적화 문서',
+        url: 'https://app.notion.com/p/2026-4-16-2026-4-22-946ea6a4f79d826c9e2e01df438746fd',
+      },
+    ],
     summary:
       '개발자와 의뢰자를 연결하는 용역 매칭 플랫폼입니다. 리뷰/포트폴리오 도메인을 설계하고, 10만 건 더미 데이터 기준 통합 검색 응답 시간을 약 1,800ms에서 90ms로 개선했습니다.',
     stack: [
@@ -169,6 +186,7 @@ export const projects = [
     team: '5인 백엔드 팀 개발',
     role: '상품/주문 도메인, 다품목 주문 API, 정기구독 모델, 주문-포인트 연동',
     github: 'https://github.com/PX-Sparta/payment-project',
+    docs: [],
     summary:
       '이커머스 결제, 정기구독, 포인트를 통합한 백엔드 시스템입니다. 상품/주문 도메인과 다품목 주문 API, 정기구독 상태/청구 모델, 주문-포인트 연동을 구현하고 비관적 락 기반 재고 동시성 제어를 적용했습니다.',
     stack: [
