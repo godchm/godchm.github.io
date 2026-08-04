@@ -15,7 +15,7 @@ const profile = {
 const highlights = [
   { label: 'Track', value: 'Backend Bootcamp' },
   { label: 'Core', value: 'Java / Spring' },
-  { label: 'Projects', value: '4 Backend Builds' },
+  { label: 'Projects', value: '5 Backend Builds' },
 ];
 
 const skillGroups = [
@@ -183,7 +183,7 @@ const introduction = [
                 </ul>
                 <div class="project-links">
                   <a class="read-more" href={`/projects/${project.slug}/`}>상세 보기</a>
-                  <a href={project.github}>GitHub</a>
+                  {project.github && <a href={project.github}>GitHub</a>}
                 </div>
               </article>
             ))

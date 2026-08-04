@@ -9,6 +9,7 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const hasHeroActions = Boolean(project.github || project.demo);
 ---
 
 <html lang="ko">
@@ -29,10 +30,16 @@ const { project } = Astro.props;
         <h1>{project.title}</h1>
         <p class="subtitle">{project.subtitle}</p>
         <p class="summary">{project.summary}</p>
-        <div class="hero-actions" aria-label="프로젝트 외부 링크">
-          <a class="primary-action" href={project.github}>GitHub Repository</a>
-          {project.demo && <a href={project.demo.url}>시연 영상</a>}
-        </div>
+        {
+          hasHeroActions && (
+            <div class="hero-actions" aria-label="프로젝트 외부 링크">
+              {project.github && (
+                <a class="primary-action" href={project.github}>GitHub Repository</a>
+              )}
+              {project.demo && <a href={project.demo.url}>시연 영상</a>}
+            </div>
+          )
+        }
         <div class="meta">
           <div>
             <span>Period</span>

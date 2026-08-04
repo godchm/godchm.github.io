@@ -242,6 +242,71 @@ export const projects = [
       },
     ],
   },
+  {
+    slug: 'certification-learning-platform',
+    title: 'Certification Learning Platform',
+    subtitle: '자격증 시험 준비 학습 관리 플랫폼',
+    period: '2026.07.31 - Present',
+    team: '개인 프로젝트 / MVP 개발 중',
+    role: '백엔드 도메인 설계, JWT 인증/인가, 학습 계획/통계 구현, 프론트 화면 구조 구성',
+    github: null,
+    demo: null,
+    docs: [],
+    summary:
+      '자격증 시험 준비를 위해 자격증 정보, 학습 계획, 게시글 커뮤니티, 학습 통계를 통합 관리하는 학습 플랫폼 MVP입니다. 현재 백엔드 핵심 기능을 우선 구현하고, 프론트엔드는 mock 데이터 기반으로 주요 화면 흐름을 구성했습니다.',
+    stack: [
+      'Java 17',
+      'Spring Boot',
+      'Spring Security',
+      'JWT',
+      'Spring Data JPA',
+      'QueryDSL',
+      'MySQL',
+      'Gradle',
+      'React',
+      'TypeScript',
+      'Vite',
+      'Zustand',
+      'React Hook Form',
+      'TanStack Query',
+      'Axios',
+      'Recharts',
+      'Tailwind CSS',
+    ],
+    featuredStack: ['JWT 인증/인가', '관리자 권한 제어', 'Long id 참조 설계', 'QueryDSL 검색/페이징', '학습 통계 자동 갱신', 'React 화면 모듈화'],
+    highlights: [
+      '자격증, 과목, 시험 회차, 학습 계획, 학습 통계를 중심으로 MVP 도메인을 설계했습니다.',
+      'JWT 필터 기반 인증 흐름과 일반 사용자/관리자 권한 분리를 구현했습니다.',
+      '프론트엔드는 mock 데이터를 기반으로 로그인, 대시보드, 자격증, 게시글, 학습 계획, 통계, 관리자 화면 구조를 먼저 구성했습니다.',
+    ],
+    details: [
+      {
+        title: 'MVP 개발 상태',
+        body:
+          '현재 MVP 개발 단계입니다. 백엔드 핵심 도메인, JWT 인증/인가, 자격증 관리, 게시글/댓글, 학습 계획, 학습 통계 기능을 우선 구현했고, 프론트엔드는 mock 데이터를 기반으로 주요 화면 구조를 구성했습니다.',
+      },
+      {
+        title: 'Backend 설계',
+        body:
+          'Spring Boot 기반 REST API 서버로 구현했습니다. JPA 연관관계 매핑 대신 Long id 기반 참조 방식을 사용했고, 복잡한 목록 조회와 페이징은 QueryDSL로 처리했습니다. 동적 검색 조건은 BooleanExpression으로 분리해 유지보수하기 쉽게 구성했습니다.',
+      },
+      {
+        title: '인증/인가와 관리자 API',
+        body:
+          '로그인 성공 시 access token을 발급하고, 이후 요청에서는 JWT 필터가 토큰을 검증한 뒤 인증 정보를 SecurityContextHolder에 저장합니다. 관리자 전용 API는 SecurityConfig에서 HTTP Method와 URL 기준으로 권한을 제한했습니다.',
+      },
+      {
+        title: 'Frontend 구조',
+        body:
+          'Vite와 React 기반으로 주요 화면과 사용자 흐름을 먼저 구성했습니다. 기존에 하나의 App.tsx에 몰려 있던 코드를 페이지, 레이아웃, 공통 컴포넌트, store, mock data, type 모듈로 분리했습니다.',
+      },
+      {
+        title: 'Next Steps',
+        body:
+          '프론트엔드와 백엔드 API 실제 연동, 목표 자격증 등록 기능, 사용자별 학습 계획/통계 소유자 검증 강화, 테스트 코드 작성, Swagger 또는 API 문서화, 배포 환경 구성을 다음 단계로 진행할 예정입니다.',
+      },
+    ],
+  },
 ] as const;
 
 export type Project = (typeof projects)[number];
