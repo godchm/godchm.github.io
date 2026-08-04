@@ -31,6 +31,10 @@ const skillGroups = [
     title: 'Ops / AI',
     items: ['Prometheus', 'Grafana', 'Loki', 'n8n', 'Spring AI', 'OpenAI API', 'RAG'],
   },
+  {
+    title: 'Frontend',
+    items: ['React', 'TypeScript', 'Vite'],
+  },
 ];
 
 const education = {
@@ -38,6 +42,13 @@ const education = {
   course: 'KDT 실시간 커머스 플랫폼 개발자 양성과정 수료',
   period: '2025.12 - 2026.06',
 };
+
+const getProjectStart = (period: string) => {
+  const [start] = period.split(' - ');
+  return Number(start.replaceAll('.', ''));
+};
+
+const sortedProjects = [...projects].sort((a, b) => getProjectStart(b.period) - getProjectStart(a.period));
 
 const introduction = [
   {
@@ -169,7 +180,7 @@ const introduction = [
         </div>
         <div class="project-grid">
           {
-            projects.map((project) => (
+            sortedProjects.map((project) => (
               <article class="project-card">
                 <div class="project-top">
                   <span>{project.period}</span>

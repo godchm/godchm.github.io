@@ -249,7 +249,7 @@ export const projects = [
     period: '2026.07.31 - Present',
     team: '개인 프로젝트 / MVP 개발 중',
     role: '백엔드 도메인 설계, JWT 인증/인가, 학습 계획/통계 구현, 프론트 화면 구조 구성',
-    github: null,
+    github: 'https://github.com/godchm/Certification-Learning-Platform',
     demo: null,
     docs: [],
     summary:
