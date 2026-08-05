@@ -248,10 +248,31 @@ export const projects = [
     subtitle: '자격증 시험 준비 학습 관리 플랫폼',
     period: '2026.07.31 - Present',
     team: '개인 프로젝트 / MVP 개발 중',
-    role: '백엔드 도메인 설계, JWT 인증/인가, 학습 계획/통계 구현, 프론트 화면 구조 구성',
+    role: '개인 프로젝트 개발, 백엔드 API 구현 및 프론트 화면 구성',
     github: 'https://github.com/godchm/Certification-Learning-Platform',
     demo: null,
-    docs: [],
+    docs: [
+      {
+        label: '비즈니스 플로우',
+        url: 'https://app.notion.com/p/3b3ea6a4f79d8039b792fdbd7e5669e8',
+      },
+      {
+        label: 'SA 기획서',
+        url: 'https://app.notion.com/p/SA-3b3ea6a4f79d802b97e4d40a6dc92ac9',
+      },
+      {
+        label: '와이어프레임',
+        url: 'https://app.notion.com/p/3b3ea6a4f79d80ff85c5e1d253c19db2',
+      },
+      {
+        label: 'API 명세',
+        url: 'https://app.notion.com/p/3b3ea6a4f79d809bb66ddd03ba6fdeff?v=3b3ea6a4f79d805fb361000c47ada605',
+      },
+      {
+        label: 'ERD',
+        url: 'https://app.notion.com/p/ERD-3b3ea6a4f79d80fa9a40dadd65672ed9',
+      },
+    ],
     summary:
       '자격증 시험 준비를 위해 자격증 정보, 학습 계획, 게시글 커뮤니티, 학습 통계를 통합 관리하는 학습 플랫폼 MVP입니다. 현재 백엔드 핵심 기능을 우선 구현하고, 프론트엔드는 mock 데이터 기반으로 주요 화면 흐름을 구성했습니다.',
     stack: [
