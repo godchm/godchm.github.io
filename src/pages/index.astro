@@ -9,14 +9,26 @@ const profile = {
   github: 'https://github.com/godchm',
   headline: '문제를 구조로 해결하고, 운영까지 책임지는 백엔드 개발자',
   summary:
-    'KDT 실시간 커머스 플랫폼 개발자 양성과정을 수료했습니다. Java/Spring 기반 백엔드 프로젝트에서 동시성 제어, 검색 최적화, RAG 추천, 모니터링, 무중단 배포를 경험했습니다.',
+    'KDT 실시간 커머스 플랫폼 개발자 양성과정을 수료하고, 현재 SaaS 기업 벳플럭스에서 PM 인턴으로 근무하고 있습니다. Java/Spring 기반 백엔드 프로젝트에서 동시성 제어, 검색 최적화, RAG 추천, 모니터링, 무중단 배포를 경험했습니다.',
 };
 
 const highlights = [
-  { label: 'Track', value: 'Backend Bootcamp' },
+  { label: 'Current', value: 'Vetflux PM Intern' },
   { label: 'Core', value: 'Java / Spring' },
-  { label: 'Projects', value: '5 Backend Builds' },
+  { label: 'Certification', value: 'SQLD' },
 ];
+
+const experience = {
+  company: '벳플럭스 (Vetflux)',
+  role: 'PM',
+  period: '2026.08.10 - 현재',
+  description: 'SaaS 기업에서 PM 인턴으로 근무 중.',
+};
+
+const certification = {
+  name: 'SQLD (SQL 개발자)',
+  date: '2026.09 합격',
+};
 
 const skillGroups = [
   {
@@ -81,9 +93,11 @@ const introduction = [
       <nav class="topbar" aria-label="페이지 내 이동">
         <div>
           <a href="#about">About</a>
+          <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
         </div>
       </nav>
 
@@ -153,6 +167,19 @@ const introduction = [
         </div>
       </section>
 
+      <section class="section" id="experience" aria-labelledby="experience-title">
+        <div class="section-title">
+          <p class="eyebrow">Career</p>
+          <h2 id="experience-title">Experience</h2>
+        </div>
+        <article class="record-card">
+          <span>{experience.period}</span>
+          <h3>{experience.company}</h3>
+          <p class="record-role">{experience.role}</p>
+          <p>{experience.description}</p>
+        </article>
+      </section>
+
       <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="section-title">
           <p class="eyebrow">Capabilities</p>
@@ -215,6 +242,17 @@ const introduction = [
             백엔드 개발 과정을 통해 Java/Spring 기반 서비스 개발, 팀 프로젝트 협업, 배포 자동화,
             모니터링, 동시성 제어와 같은 실무형 주제를 프로젝트로 학습했습니다.
           </p>
+        </article>
+      </section>
+
+      <section class="section" id="certifications" aria-labelledby="certifications-title">
+        <div class="section-title">
+          <p class="eyebrow">Credentials</p>
+          <h2 id="certifications-title">Certifications</h2>
+        </div>
+        <article class="record-card">
+          <span>{certification.date}</span>
+          <h3>{certification.name}</h3>
         </article>
       </section>
     </main>
@@ -357,7 +395,8 @@ const introduction = [
   .summary,
   .section-title p,
   .project-card p,
-  .education-card p {
+  .education-card p,
+  .record-card p {
     color: var(--muted);
     line-height: 1.72;
   }
@@ -397,7 +436,8 @@ const introduction = [
   .intro-card,
   .skill-card,
   .project-card,
-  .education-card {
+  .education-card,
+  .record-card {
     border: 1px solid rgba(216, 223, 217, 0.98);
     border-radius: 8px;
     background: rgba(255, 253, 250, 0.9);
@@ -449,7 +489,8 @@ const introduction = [
 
   .metric span,
   .project-top span,
-  .education-card span {
+  .education-card span,
+  .record-card span {
     display: block;
     color: var(--gold);
     font-size: 0.78rem;
@@ -493,7 +534,8 @@ const introduction = [
   .intro-card,
   .skill-card,
   .project-card,
-  .education-card {
+  .education-card,
+  .record-card {
     padding: 22px;
   }
 
@@ -592,6 +634,16 @@ const introduction = [
 
   .education-card h3 {
     margin-top: 12px;
+  }
+
+  .record-card h3 {
+    margin-top: 12px;
+  }
+
+  .record-card .record-role {
+    margin: 8px 0 0;
+    color: var(--accent-dark);
+    font-weight: 800;
   }
 
   @media (max-width: 900px) {
